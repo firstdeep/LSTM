@@ -1,0 +1,64 @@
+# System
+mode: train #train or test
+
+gpu_num: 5
+seed: 42
+
+save_folder: 3D_result
+
+checkpoint: False # train reload
+checkpoint_path: '20221117_105448' # train reload or test
+checkpoint_epoch: 100
+
+# Data Loader
+input_width: 512
+input_height: 512
+scaler: normalize
+num_workers: 0
+
+# Trainer
+n_epochs: 101
+batch_size: 1
+slice: 8
+loss:
+  name: BCE # MeanCCELoss
+  args:
+
+optimizer:
+  name: Adam #AdamW
+  args:
+    lr: 1.0e-04
+    betas:
+      - 0.5
+      - 0.999
+    # weight_decay: 5.0e-02
+
+scheduler:
+  name: Exponential
+  args:
+    gamma: 0.99
+
+prefix: 3DUnet
+
+plot:
+  - loss
+
+save_epoch:
+  - 5
+  - 20
+  - 30
+  - 40
+  - 45
+  - 50
+  - 55
+  - 60
+  - 65
+  - 70
+  - 75
+  - 80
+  - 85
+  - 90
+  - 95
+  - 100
+
+
